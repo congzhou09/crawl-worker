@@ -1,0 +1,8 @@
+.venv
+text
+processed
+__pycache__
+key
+playwright-screenshot.png
+logs/*
+!logs/.gitkeep

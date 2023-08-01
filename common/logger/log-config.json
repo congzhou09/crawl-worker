@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "fileName": "log",
+  "formatters": {
+    "base": { "format": "%(asctime)s - %(name)s - %(levelname)s: %(message)s" }
+  },
+  "handlers": {
+    "file-warn-error": {
+      "class": "logging.handlers.TimedRotatingFileHandler",
+      "filename": "logs/warn-error.log",
+      "when": "midnight",
+      "encoding": "utf-8",
+      "backupCount": 7,
+      "formatter": "base",
+      "level": "WARN"
+    },
+    "file-info": {
+      "class": "logging.handlers.TimedRotatingFileHandler",
+      "filename": "logs/info.log",
+      "when": "midnight",
+      "encoding": "utf-8",
+      "backupCount": 7,
+      "formatter": "base",
+      "level": "INFO"
+    },
+    "std-debug": {
+      "class": "logging.StreamHandler",
+      "formatter": "base",
+      "level": "DEBUG"
+    }
+  },
+  "loggers": {
+    "one-client": {
+      "level": "DEBUG",
+      "handlers": ["std-debug", "file-warn-error", "file-info"],
+      "propagate": false,
+      "disable_existing_loggers": true
+    }
+  }
+}
